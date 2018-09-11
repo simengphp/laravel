@@ -25,15 +25,15 @@ class StudentController extends Controller
     {
         if ($request->isMethod('post')) {
             $data = $request->input('student');
-            try {
+//            try {
                 if (Student::create($data)) {
                     return redirect('index')->with('success', '新增成功');
                 } else {
                     return redirect()->back()->with('error', '新增失败');
                 }
-            } catch (\Exception $e) {
-                return redirect()->back()->with('error', '新增失败');
-            }
+//            } catch (\Exception $e) {
+//                return redirect()->back()->with('error', '新增失败');
+//            }
 
         } else {
             return view('student.create');
