@@ -11,6 +11,7 @@
             <thead>
             <tr>
                 <th>ID</th>
+                <th>头像</th>
                 <th>姓名</th>
                 <th>年龄</th>
                 <th>性别</th>
@@ -22,6 +23,8 @@
             @foreach($student as $val)
                 <tr>
                     <th scope="row">{{$val['id']}}</th>
+                    <td><img width="25px" height="25px"
+                             src="{{ $val['img']?'/uploads/'.$val['img']:'/uploads/logo.jpg'}}" alt="" class="img-circle"></td>
                     <td>{{$val['name']}}</td>
                     <td>{{$val['age']}}</td>
                     <td>{{$val->returnSex($val['sex'])}}</td>

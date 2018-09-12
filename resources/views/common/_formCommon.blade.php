@@ -1,4 +1,4 @@
-<form class="form-horizontal" method="post" action="">
+<form class="form-horizontal" method="post" action="" enctype="multipart/form-data">
     {{ csrf_field() }}
     <div class="form-group">
         <label for="name" class="col-sm-2 control-label">姓名</label>
@@ -21,6 +21,17 @@
         </div>
         <div class="col-sm-5">
             <p class="form-control-static text-danger">{{ $errors->first('student.age') }}</p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="age" class="col-sm-2 control-label">头像</label>
+        <div class="col-sm-5">
+            @if($student['img'])
+                <input type="file" name="img" id="">
+                <img src="/uploads/{{$student['img']}}" width="100px" height="100px" class="img-circle"/>
+                @else
+                <input type="file" name="img" id="">
+            @endif
         </div>
     </div>
     <div class="form-group">

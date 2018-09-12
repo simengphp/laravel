@@ -19,7 +19,7 @@ class Student extends Model
 
     protected $table = 'student';
 
-    protected $fillable = ['name', 'age', 'sex'];
+    protected $fillable = ['name', 'age', 'sex', 'img'];
 
     public $timestamps = true;
 
