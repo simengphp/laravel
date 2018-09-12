@@ -51,7 +51,11 @@ class StudentController extends Controller
             }
             $data = $request->input('student');
             $file_img = $this->common($request, 'img'); //上传图片
-            $data['img'] = $file_img;
+            if (isset($file_img['flag']) && $file_img['flag'] === false) {
+                return redirect()->back()->with('error', $file_img['msg'])->withInput();
+            } else {
+                $data['img'] = $file_img;
+            }
             if (Student::create($data)) {
                 return redirect('student/index')->with('success', '新增成功');
             } else {
@@ -95,7 +99,11 @@ class StudentController extends Controller
         if ($request->isMethod('post')) {
             $data = $request->input('student');
             $file_img = $this->common($request, 'img'); //上传图片
-            $file_img ? $student->img = $data['img'] = $file_img:'';
+            if (isset($file_img['flag']) && $file_img['flag'] === false) {
+                return redirect()->back()->with('error', $file_img['msg'])->withInput();
+            } else {
+                $file_img?$student->img = $file_img:'';
+            }
             $student->name = $data['name'];
             $student->age = $data['age'];
             $student->sex = $data['sex'];
@@ -115,17 +123,28 @@ class StudentController extends Controller
     public function common($request, $file_name)
     {
         $file = $request->file($file_name);
+        if (!isset($file)) {
+            return;
+        }
         if ($file->isValid()) {
             $ret = UploadController::isImg($file);
             if ($ret) {
                 $is_upload = UploadController::uploadOne($file);
                 if ($is_upload === false) {
-                    return redirect()->back()->with('error', '图片上传失败')->withInput();
+                    $arr = [
+                        'msg'=>'上传失败',
+                        'flag' =>false
+                    ];
+                    return $arr;
                 } else {
                     return $is_upload;
                 }
             } else {
-                return redirect()->back()->with('error', '图片后缀错误')->withInput();
+                $arr = [
+                    'msg'=>'图片后缀错误',
+                    'flag' =>false
+                ];
+                return $arr;
             }
         }
     }
