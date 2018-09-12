@@ -74,11 +74,19 @@ class StudentController extends Controller
 
     public function edit(Request $request, $id)
     {
+        $student = Student::find($id);
         if ($request->isMethod('post')) {
-
+            $data = $request->input('student');
+            $student->name = $data['name'];
+            $student->age = $data['age'];
+            $student->sex = $data['sex'];
+            if ($student->save()) {
+                return redirect('student/index')->with('success', '修改成功-' . $id);
+            } else {
+                return redirect()->back()->with('error', '修改失败')->withInput();
+            }
         } else {
-            $ret = Student::find($id);
-            return view('student.update', ['student'=>$ret]);
+            return view('student.update', ['student'=>$student]);
         }
     }
 }

@@ -20,6 +20,9 @@ class Student extends Model
     protected $table = 'student';
 
     protected $fillable = ['name', 'age', 'sex'];
+
+    public $timestamps = true;
+
 //    public static function getData()
 //    {
 //        //$ret = DB::select('select * from db_student');
@@ -27,6 +30,10 @@ class Student extends Model
 //        where('name', '=', '滚滚滚')->orWhere('name', 'like', '嗯%')->get();
 //        return $ret;
 //    }
+    public function fromDateTime($value)
+    {
+        return empty($value) ? $value : $this->getDateFormat();
+    }
 
     protected function getDateFormat()
     {
