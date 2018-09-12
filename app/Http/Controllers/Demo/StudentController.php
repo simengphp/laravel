@@ -12,13 +12,13 @@ use App\Exceptions\StudentException;
 use App\Http\Controllers\Controller;
 use App\Model\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class StudentController extends Controller
 {
-
     public function index()
     {
-        $ret = Student::where('id', '>', 10)->paginate(3);
+        $ret = Student::paginate(3);
         if ($ret->isEmpty()) {
             throw new StudentException();
         }
@@ -28,14 +28,57 @@ class StudentController extends Controller
     public function create(Request $request)
     {
         if ($request->isMethod('post')) {
+            $validate = Validator::make($request->input(), [
+                'student.name'  =>'required',
+                'student.age'   =>'required|integer',
+                'student.sex'   =>'required|integer'
+            ], [
+                'required'   =>':attribute 为必填项',
+                'integer'   =>':attribute 必须为整数',
+            ], [
+                'student.name'=>'姓名',
+                'student.age'=>'年龄',
+                'student.sex'=>'性别',
+            ]);
+            if ($validate->fails()) {
+                return redirect()->back()->withErrors($validate)->withInput();
+            }
+
             $data = $request->input('student');
             if (Student::create($data)) {
-                return redirect('index')->with('success', '新增成功');
+                return redirect('student/index')->with('success', '新增成功');
             } else {
                 return redirect()->back()->with('error', '新增失败');
             }
         } else {
-            return view('student.create');
+            return view('student.create', ['student'=>new Student()]);
+        }
+    }
+
+    public function detail($id)
+    {
+        $ret = Student::find($id);
+        return view('student.detail', ['student'=>$ret]);
+    }
+
+    public function del($id)
+    {
+        $student = Student::find($id);
+
+        if ($student->delete()) {
+            return redirect('student/index')->with('success', '删除成功-' . $id);
+        } else {
+            return redirect('student/index')->with('error', '删除失败-' . $id);
+        }
+    }
+
+    public function edit(Request $request, $id)
+    {
+        if ($request->isMethod('post')) {
+
+        } else {
+            $ret = Student::find($id);
+            return view('student.update', ['student'=>$ret]);
         }
     }
 }

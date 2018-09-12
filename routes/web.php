@@ -14,14 +14,13 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('index', 'Demo\StudentController@index');
+Route::get('/student/index', 'Demo\StudentController@index');
 
 
 
 Route::group(['middleware'=>'web'], function () {
-    Route::any('create', 'Demo\StudentController@create');
+    Route::any('student/create', 'Demo\StudentController@create');
+    Route::any('student/detail/{id}', 'Demo\StudentController@detail');
+    Route::any('student/del/{id}', 'Demo\StudentController@del');
+    Route::any('student/edit/{id}', 'Demo\StudentController@edit');
 });
-
-
-
-

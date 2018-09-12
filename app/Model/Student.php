@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\DB;
 
 class Student extends Model
 {
+    const SEX_NAN = 1;
+    const SEX_NV = 2;
+    const SEX_NULL = 0;
+
     protected $table = 'student';
 
     protected $fillable = ['name', 'age', 'sex'];
@@ -32,5 +36,19 @@ class Student extends Model
     protected function asDateTime($value)
     {
         return $value;
+    }
+
+    public function returnSex($ind = null)
+    {
+        $arr = [
+            self::SEX_NAN => '男',
+            self::SEX_NULL => '未知',
+            self::SEX_NV => '女',
+        ];
+
+        if ($ind !== null) {
+            return array_key_exists($ind, $arr) ? $arr[$ind]:$arr[self::SEX_NULL];
+        }
+        return $arr;
     }
 }

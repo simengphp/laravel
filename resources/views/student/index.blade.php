@@ -24,12 +24,13 @@
                     <th scope="row">{{$val['id']}}</th>
                     <td>{{$val['name']}}</td>
                     <td>{{$val['age']}}</td>
-                    <td>{{$val['sex']?'男':'女'}}</td>
-                    <td>{{ date('Y-m-d', $val['created_at'])}}</td>
+                    <td>{{$val->returnSex($val['sex'])}}</td>
+                    <td>{{ date('Y-m-d H:i:s', $val['created_at'])}}</td>
                     <td>
-                        <a href="">详情</a>
-                        <a href="">修改</a>
-                        <a href="">删除</a>
+                        <a href="{{ url('student/detail', ['id'=>$val['id']]) }}">详情</a>
+                        <a href="{{ url('student/edit', ['id'=>$val['id']]) }}">修改</a>
+                        <a onclick="if (confirm('确定要删除吗？') == false) return false;"
+                           href="{{ url('student/del', ['id'=>$val['id']]) }}">删除</a>
                     </td>
                 </tr>
             @endforeach
