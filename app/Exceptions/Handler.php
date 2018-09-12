@@ -40,14 +40,40 @@ class Handler extends ExceptionHandler
     }
 
     /**
+     * render 自定义方异常处理方法
+    */
+    public function render($request, Exception $e)
+    {
+        if (config('app.debug')) {
+            return parent::render($request, $e);
+        }
+        return $this->handle($request, $e);
+    }
+
+    /**
      * Render an exception into an HTTP response.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Exception  $exception
      * @return \Illuminate\Http\Response
      */
-    public function render($request, Exception $exception)
+    public function handle($request, Exception $exception)
     {
-        return parent::render($request, $exception);
+        if ($exception instanceof BaseException) {
+            $msg = $exception->message;
+            $code = $exception->code;
+            $data = [];
+        } else {
+            $msg = '服务器错误';
+            $code = '500';
+            $data = [];
+        }
+        $result = [
+            "msg" => $msg,
+            "code"=>$code,
+            "data"=>$data
+        ];
+        return response()->json($result);
+        //return parent::render($request, $exception);
     }
 }

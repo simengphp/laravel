@@ -3,23 +3,14 @@
      * Created by PhpStorm.
      * User: Administrator
      * Date: 2018/9/11
-     * Time: 17:33
+     * Time: 17:59
      */
 
 namespace App\Exceptions;
 
-use Exception;
-
-class BaseException extends Handler
+class BaseException extends \Exception
 {
-    public function report(Exception $exception)
-    {
+    public $message = '信息错误';
 
-    }
-
-    public function render($request, Exception $exception)
-    {
-        echo 111111;
-        return 111;exit();
-    }
+    public $code = '500';
 }
