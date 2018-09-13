@@ -12,7 +12,7 @@ use App\Exceptions\StudentException;
 use App\Http\Controllers\Controller;
 use App\Model\Student;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
+use App\Http\Controllers\Auth\Demo\StudentAuthController;
 
 class StudentController extends Controller
 {
@@ -34,20 +34,9 @@ class StudentController extends Controller
     public function create(Request $request)
     {
         if ($request->isMethod('post')) {
-            $validate = Validator::make($request->input(), [
-                'student.name'  =>'required',
-                'student.age'   =>'required|integer',
-                'student.sex'   =>'required|integer'
-            ], [
-                'required'   =>':attribute 为必填项',
-                'integer'   =>':attribute 必须为整数',
-            ], [
-                'student.name'=>'姓名',
-                'student.age'=>'年龄',
-                'student.sex'=>'性别',
-            ]);
-            if ($validate->fails()) {
-                return redirect()->back()->withErrors($validate)->withInput();
+            $ret_auth = (new StudentAuthController())->goCheck($request);
+            if ($ret_auth !== true) {
+                return redirect()->back()->withErrors($ret_auth)->withInput();
             }
             $data = $request->input('student');
             $file_img = $this->common($request, 'img'); //上传图片
@@ -97,6 +86,11 @@ class StudentController extends Controller
     {
         $student = Student::find($id);
         if ($request->isMethod('post')) {
+            $ret_auth = (new StudentAuthController())->goCheck($request);
+            if ($ret_auth !== true) {
+                return redirect()->back()->withErrors($ret_auth)->withInput();
+            }
+
             $data = $request->input('student');
             $file_img = $this->common($request, 'img'); //上传图片
             if (isset($file_img['flag']) && $file_img['flag'] === false) {
