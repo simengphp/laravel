@@ -18,6 +18,7 @@ class DemoTestController extends Controller
         if ($request->isMethod('post')) {
             $file = $request->file('img');
             $ret = UploadController::uploadMore($file);
+            dd($ret);
         }
         return view('demo.demotest.test');
     }

@@ -12,6 +12,9 @@ use Illuminate\Support\Facades\Storage;
 
 class UploadController
 {
+    /**判断文件的后缀名
+     * @author crazy
+     */
     public static function isImg($file)
     {
         $arr = ['jpg','png','gif'];
@@ -22,6 +25,9 @@ class UploadController
         return true;
     }
 
+    /**单图上传
+     * @author crazy
+     */
     public static function uploadOne($file)
     {
         //获取文件的扩展名
@@ -42,6 +48,9 @@ class UploadController
         return false;
     }
 
+    /**多图上传
+     * @author crazy
+     */
     public static function uploadMore($files)
     {
         $arr = [];
