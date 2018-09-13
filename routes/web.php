@@ -24,3 +24,5 @@ Route::group(['middleware'=>'web'], function () {
     Route::any('student/del/{id}', 'Demo\StudentController@del');
     Route::any('student/edit/{id}', 'Demo\StudentController@edit');
 });
+
+Route::any('demo/test', 'Demo\DemoTestController@test');
