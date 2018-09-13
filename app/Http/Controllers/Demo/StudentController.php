@@ -43,7 +43,7 @@ class StudentController extends Controller
             if (isset($file_img['flag']) && $file_img['flag'] === false) {
                 return redirect()->back()->with('error', $file_img['msg'])->withInput();
             } else {
-                $data['img'] = $file_img;
+                $data['img'] = $file_img??'';
             }
             if (Student::create($data)) {
                 return redirect('student/index')->with('success', '新增成功');

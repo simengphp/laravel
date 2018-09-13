@@ -13,7 +13,7 @@ class StudentAuthController extends BaseAuthController
     protected $rules = [
         'student.name'  =>'required',
         'student.age'   =>'required|integer',
-        'student.sex'   =>'required|integer'
+        'student.sex'   =>'required|integer',
     ];
     protected $message = [
         'required'   =>':attribute 为必填项',
