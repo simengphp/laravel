@@ -8,6 +8,7 @@
 
 namespace App\Http\Controllers\Demo;
 
+use App\Events\OrderShipped;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -21,5 +22,11 @@ class DemoTestController extends Controller
             dd($ret);
         }
         return view('demo.demotest.test');
+    }
+
+    /**发送邮件*/
+    public function sendMail()
+    {
+        event(new OrderShipped());
     }
 }

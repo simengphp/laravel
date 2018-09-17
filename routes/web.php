@@ -26,3 +26,4 @@ Route::group(['middleware'=>'web'], function () {
 });
 
 Route::any('demo/test', 'Demo\DemoTestController@test');
+Route::any('demo/sendMail', 'Demo\DemoTestController@sendMail');
