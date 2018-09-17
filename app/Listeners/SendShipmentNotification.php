@@ -26,7 +26,6 @@ class SendShipmentNotification
      */
     public function handle(OrderShipped $event)
     {
-        //$event->order;
-        $event->test();
+        //$event->order; $event->test()
     }
 }
