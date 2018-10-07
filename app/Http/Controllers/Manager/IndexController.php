@@ -13,6 +13,6 @@ class IndexController extends BaseController
 {
     public function index()
     {
-        return view('Manager.Manager.login');
+        return view('manager.index.index');
     }
 }

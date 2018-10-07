@@ -27,16 +27,16 @@ class ManagerController extends BaseController
             $admin_auth = (new AdminAuthController())->goCheck($request);
             if ($admin_auth) {
                 return redirect()->back()->withErrors($admin_auth)->withInput();
-            } else {
-                dd($this->admin_obj->getOneAdmin($request));
             }
+            /**获取账号和密码*/
+            $ret = $this->admin_obj->getOneAdmin($request);
+            if ($ret['code'] == 0) {
+                return redirect()->back()->with('error', $ret['error'])->withInput();
+            }
+            return redirect('main/index');
         } else {
-            return view('Manager.Manager.login');
+            return view('manager.manager.login');
         }
     }
 
-    public function index(Request $request)
-    {
-
-    }
 }

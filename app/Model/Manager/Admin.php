@@ -24,7 +24,17 @@ class Admin extends Base
 
     public function getOneAdmin(Request $request)
     {
-        $ret = $this->table_obj->where('id', 1)->first();
-        return $ret;
+        $ret = $this->table_obj->where('account', $request->post('account'))->first();
+        if (empty($ret)) {
+            return ['code'=>0,'error'=>'账号不存在'];
+        }
+        $ret = $this->table_obj->where([['account', $request->post('account')],['password', $request->post('password')]])->first();
+        if (empty($ret)) {
+            return ['code'=>0,'error'=>'密码错误'];
+        }
+        session('admin_id', $ret->id);
+        session('admin_name', $ret->name);
+        session('admin_account', $ret->account);
+        return ['code'=>1,'ret'=>$ret];
     }
 }

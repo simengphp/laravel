@@ -7,4 +7,5 @@
  */
 Route::group(['middleware'=>'manager'], function () {
     Route::any('/manager/login', 'Manager\ManagerController@login');
+    Route::any('/main/index', 'Manager\IndexController@index');
 });
