@@ -15,6 +15,9 @@ class Manager
      */
     public function handle($request, Closure $next)
     {
-        echo 11111;
+        if (!session('admin_id') && !$request->is('manager/login')) {
+            return redirect('/manager/login');
+        }
+        return $next($request);
     }
 }

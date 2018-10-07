@@ -11,6 +11,7 @@ namespace App\Http\Controllers\Manager;
 use App\Http\Controllers\Auth\Manager\AdminAuthController;
 use App\Model\Manager\Admin;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class ManagerController extends BaseController
 {
@@ -41,7 +42,7 @@ class ManagerController extends BaseController
 
     public function loginOut()
     {
-        session(null);
+        Session::flush();
         return redirect('manager/login');
     }
 
