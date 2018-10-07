@@ -39,4 +39,10 @@ class ManagerController extends BaseController
         }
     }
 
+    public function loginOut()
+    {
+        session(null);
+        return redirect('manager/login');
+    }
+
 }

@@ -11,6 +11,7 @@ namespace App\Model\Manager;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class Admin extends Base
 {
@@ -32,9 +33,9 @@ class Admin extends Base
         if (empty($ret)) {
             return ['code'=>0,'error'=>'密码错误'];
         }
-        session('admin_id', $ret->id);
-        session('admin_name', $ret->name);
-        session('admin_account', $ret->account);
+        Session::put('admin_id', $ret->id);
+        Session::put('admin_name', $ret->name);
+        Session::put('admin_account', $ret->account);
         return ['code'=>1,'ret'=>$ret];
     }
 }
