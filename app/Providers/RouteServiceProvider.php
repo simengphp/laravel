@@ -39,7 +39,10 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapWebRoutes();
 
-        //
+        //自定义一个博客的路由
+        $this->mapBlogRoutes();
+
+        $this->mapManagerRoutes();
     }
 
     /**
@@ -52,8 +55,36 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapWebRoutes()
     {
         Route::middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/web.php'));
+    }
+
+    /**
+     * Define the "web" routes for the application.
+     *
+     * These routes all receive session state, CSRF protection, etc.
+     *
+     * @return void
+     */
+    protected function mapBlogRoutes()
+    {
+        Route::middleware('blog')
              ->namespace($this->namespace)
-             ->group(base_path('routes/web.php'));
+             ->group(base_path('routes/blog.php'));
+    }
+
+    /**
+     * 自定义博客系统平台
+     *
+     * These routes all receive session state, CSRF protection, etc.
+     *
+     * @return void
+     */
+    protected function mapManagerRoutes()
+    {
+        Route::middleware('manager')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/manager.php'));
     }
 
     /**

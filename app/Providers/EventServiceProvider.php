@@ -16,6 +16,10 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\OrderShipped' => [
             'App\Listeners\SendShipmentNotification',
         ],
+        // 新增SqlListener监听QueryExecuted
+        'Illuminate\Database\Events\QueryExecuted' => [
+            'App\Listeners\SqlListener',
+        ],
     ];
 
     /**
