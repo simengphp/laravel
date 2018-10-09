@@ -1,8 +1,8 @@
 @include('manager.common.header')
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
-    @include('manager.common.left')
     @include('manager.common.top')
+    @include('manager.common.left')
     @section('content')
         @include('manager.common.content')
     @show
