@@ -27,3 +27,7 @@ Route::group(['middleware'=>'web'], function () {
 
 Route::any('demo/test', 'Demo\DemoTestController@test');
 Route::any('demo/sendMail', 'Demo\DemoTestController@sendMail');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

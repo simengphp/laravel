@@ -8,7 +8,6 @@
 
 namespace App\Http\Controllers\Manager;
 
-
 class IndexController extends BaseController
 {
     public function index()

@@ -8,7 +8,6 @@
 
 namespace App\Http\Controllers\Auth\Manager;
 
-
 class AdminAuthController extends BaseAuthController
 {
     protected $rules = [
