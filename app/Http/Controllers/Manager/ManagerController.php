@@ -11,7 +11,6 @@ namespace App\Http\Controllers\Manager;
 use App\Http\Controllers\Auth\Manager\AdminAuthController;
 use App\Model\Manager\Admin;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Session;
 
 class ManagerController extends BaseController

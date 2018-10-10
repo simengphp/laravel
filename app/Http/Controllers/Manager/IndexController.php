@@ -12,6 +12,6 @@ class IndexController extends BaseController
 {
     public function index()
     {
-        return view('manager.index.index');
+        return view('manager.index.index', ['top_name'=>'首页','version'=>'1.0']);
     }
 }

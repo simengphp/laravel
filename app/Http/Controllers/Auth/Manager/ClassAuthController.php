@@ -8,20 +8,18 @@
 
 namespace App\Http\Controllers\Auth\Manager;
 
-class AdminAuthController extends BaseAuthController
+class ClassAuthController extends BaseAuthController
 {
     protected $rules = [
-        'account'   =>'required|max:8',
-        'password'  =>'required',
+        'class_name'   =>'required',
     ];
 
     protected $message = [
         'required'   =>'请输入:attribute',
-        'max'   =>'请输入少于8位:attribute',
     ];
 
     protected $customAttributes = [
-        'account'   =>'账号',
-        'password'  =>'密码'
+        'class_name'   =>'分类名称',
+
     ];
 }

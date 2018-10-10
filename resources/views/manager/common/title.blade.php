@@ -1,10 +1,10 @@
 <section class="content-header">
     <h1>
-        Dashboard
-        <small>Control panel</small>
+        {{ $top_name }}
+        <small>Version{{ $version }}</small>
     </h1>
     <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Dashboard</li>
+        <li><a href="/main/index"><i class="fa fa-dashboard"></i>首页</a></li>
+        <li class="active">{{ $top_name }}</li>
     </ol>
 </section>

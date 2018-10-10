@@ -33,9 +33,13 @@ class Admin extends Base
         if (empty($ret)) {
             return ['code'=>0,'error'=>'密码错误'];
         }
+        $this->table_obj->where([['account', $request->post('account')],['password', $request->
+        post('password')]])->limit(1)->update(['last_login_time'=>time()]);
         Session::put('admin_id', $ret->id);
         Session::put('admin_name', $ret->name);
         Session::put('admin_account', $ret->account);
+        Session::put('admin_pic', $ret->pic);
+        Session::put('last_login_time', date('Y-m-d H:i:s', $ret->last_login_time));
         return ['code'=>1,'ret'=>$ret];
     }
 }

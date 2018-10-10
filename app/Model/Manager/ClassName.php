@@ -6,10 +6,64 @@
      * Time: 9:52
      */
 
-    namespace App\Model\Manager;
+namespace App\Model\Manager;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
-    class ClassName
+class ClassName extends Base
+{
+    use SoftDeletes;
+    protected $table = 'class';
+    protected $primaryKey = 'id';
+    protected $model = null;
+    public $timestamps = true;
+    public $fillable = ['class_name', 'sort'];
+    public function fromDateTime($value)
     {
-
+        return empty($value)?$value:$this->getTimeFormat();
     }
+
+    public function getTimeFormat()
+    {
+        return time();
+    }
+
+     /**模型查询默认是讲时间戳格式化的，如果想返回原样则需加下面函数*/
+//    protected function asDateTime($val)
+//    {
+//        return $val;
+//    }
+    public function __construct(array $attributes = [])
+    {
+        $this->model = DB::table('class');
+        parent::__construct($attributes);
+    }
+
+    public function classList($num)
+    {
+        $ret = ClassName::paginate($num);
+        return $ret;
+    }
+
+    public function curdModel(Request $request)
+    {
+        $data = $request->post();
+        if (isset($data['id'])) {
+            $class = ClassName::find($data['id']);
+            $class->class_name = $data['class_name'];
+            $class->sort = $data['sort'];
+            $ret = $class->save();
+        } else {
+            $ret = ClassName::create($data);
+        }
+
+        return $ret;
+    }
+
+    public function getOneDetail($id)
+    {
+        return ClassName::find($id);
+    }
+}
