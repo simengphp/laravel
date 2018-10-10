@@ -43,7 +43,7 @@ class ClassName extends Base
 
     public function classList($num)
     {
-        $ret = ClassName::paginate($num);
+        $ret = ClassName::orderBy('created_at', 'desc')->orderBy('sort', 'asc')->paginate($num);
         return $ret;
     }
 
@@ -65,5 +65,11 @@ class ClassName extends Base
     public function getOneDetail($id)
     {
         return ClassName::find($id);
+    }
+
+    public function getUnique($class_name)
+    {
+        return DB::table('class')
+            ->where('class_name', $class_name)->where('deleted_at', null)->get();
     }
 }
