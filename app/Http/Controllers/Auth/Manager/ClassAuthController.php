@@ -11,12 +11,13 @@ namespace App\Http\Controllers\Auth\Manager;
 class ClassAuthController extends BaseAuthController
 {
     protected $rules = [
-        'class_name' => 'required|uniqueCommon:id',
+        'class_name' => 'required|uniqueCommon',
         'sort'      =>'required'
     ];
 
     protected $message = [
         'required' => '请输入:attribute',
+        'unique_common' => ':attribute已经存在',
     ];
 
     protected $customAttributes = [
