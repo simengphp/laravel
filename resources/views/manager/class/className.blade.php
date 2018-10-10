@@ -3,6 +3,7 @@
     <section class="content">
     <div class="row">
         @include('manager.common.ajaxErrorSuccess')
+        @include('manager.common.message')
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header container">

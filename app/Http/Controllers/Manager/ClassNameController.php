@@ -34,7 +34,11 @@ class ClassNameController extends BaseController
                 return redirect()->back()->withErrors($auth)->withInput();
             }
             $ret = $this->model_obj->curdModel($request);
-            dd($ret);
+            if ($ret) {
+                return redirect('class/classList')->with('success', '添加成功');
+            } else {
+                return redirect('class/classList')->with('error', '添加失败');
+            }
         } else {
             if ($request->get('id')) {
                 $ret = $this->model_obj->getOneDetail($request->get('id'));
