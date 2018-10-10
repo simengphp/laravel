@@ -67,8 +67,13 @@ class ClassName extends Base
         return ClassName::find($id);
     }
 
-    public function getUnique($class_name)
+    public function getUnique($class_name, $id = 0)
     {
+        if ($id > 0) {
+            return DB::table('class')
+                ->where('class_name', $class_name)->where('deleted_at', null)->
+                where('id', '<>', $id)->get();
+        }
         return DB::table('class')
             ->where('class_name', $class_name)->where('deleted_at', null)->get();
     }
