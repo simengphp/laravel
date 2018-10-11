@@ -32,6 +32,7 @@ class AppServiceProvider extends ServiceProvider
         /**设置全局模板变量*/
         list($controller, $action) = explode('/', $request->path());
         View::share("controller", $controller);
+        View::share("action", $action);
     }
 
     /**
