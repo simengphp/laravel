@@ -45,14 +45,14 @@ class ClassName extends Base
     {
         $search = $request->all();
         if (isset($search['search'])) {
-            $ret = ClassName::where('class_name', 'like', '%'.$search['search'].'%')->orderBy('created_at', 'desc')
-                ->orderBy('sort', 'asc')->paginate($num);
+            $ret = ClassName::where('class_name', 'like', '%'.$search['search'].'%')
+                ->orderBy('sort', 'asc')->orderBy('created_at', 'desc')->paginate($num);
             $ret->appends(array(
                 'search' => $search['search'],
             ));
             return $ret;
         } else {
-            $ret = ClassName::orderBy('created_at', 'desc')->orderBy('sort', 'asc')->paginate($num);
+            $ret = ClassName::orderBy('sort', 'asc')->orderBy('created_at', 'desc')->paginate($num);
             return $ret;
         }
     }
@@ -60,7 +60,7 @@ class ClassName extends Base
     public function curdModel(Request $request)
     {
         $data = $request->post();
-        if (isset($data['id'])) {
+        if (isset($data['id'])&&$data['id']>0) {
             $class = ClassName::find($data['id']);
             $class->class_name = $data['class_name'];
             $class->sort = $data['sort'];

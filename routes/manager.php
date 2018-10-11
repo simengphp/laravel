@@ -13,6 +13,7 @@ Route::group(['middleware'=>'manager'], function () {
     Route::any('/manager/loginOut', 'Manager\ManagerController@loginOut');
 
     Route::any('/article/articles', 'Manager\ArticleController@articleList');
+    Route::any('/article/curdArticle', 'Manager\ArticleController@curdArticle');
     /**文章分类*/
     Route::any('/class/classList', 'Manager\ClassNameController@classList');
     Route::any('/class/curdClass', 'Manager\ClassNameController@curdClass');

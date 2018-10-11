@@ -9,6 +9,7 @@
 namespace App\Http\Controllers\Manager;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Demo\UploadController;
 use App\Model\Manager\Base;
 use Illuminate\Http\Request;
 
@@ -30,6 +31,38 @@ class BaseController extends Controller
             return ['code'=>1];
         } else {
             return ['code'=>0];
+        }
+    }
+
+    /**上传图片的公共方法
+     * @author crazy
+     */
+    public function common(Request $request, $file_name)
+    {
+        $file = $request->file($file_name);
+        if (!isset($file)) {
+            return;
+        }
+        if ($file->isValid()) {
+            $ret = UploadController::isImg($file);
+            if ($ret) {
+                $is_upload = UploadController::uploadOne($file);
+                if ($is_upload === false) {
+                    $arr = [
+                        'msg'=>'上传失败',
+                        'flag' =>false
+                    ];
+                    return $arr;
+                } else {
+                    return $is_upload;
+                }
+            } else {
+                $arr = [
+                    'msg'=>'图片后缀错误',
+                    'flag' =>false
+                ];
+                return $arr;
+            }
         }
     }
 }

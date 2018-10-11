@@ -7,7 +7,7 @@
             <div class="box">
                 <div class="box-header container">
                     <div class="col-xs-1">
-                        <a href="/class/curdClass">
+                        <a href="/article/curdArticle">
                             <button type="button" class="btn btn-primary">添加</button>
                         </a>
                     </div>
@@ -15,7 +15,7 @@
                         <form action="" class="" method="post">
                             <div class="col-xs-8">
                                 <input class="form-control" id="inputEmail3" name="search" value=""
-                                       placeholder="导航名称" type="text">
+                                       placeholder="文章标题" type="text">
                             </div>
                             <div class="col-xs-3">
                                 <button type="submit" class="btn btn-primary">查询</button>
@@ -29,7 +29,8 @@
                         <thead>
                         <tr>
                             <th>编号</th>
-                            <th>名称</th>
+                            <th>文章标题</th>
+                            <th>浏览量</th>
                             <th>排序</th>
                             <th>创建时间</th>
                             <th>修改时间</th>
@@ -40,16 +41,23 @@
                         @foreach($list as $val)
                             <tr>
                                 <td>{{$val->id}}</td>
-                                <td>{{$val->class_name}}</td>
+                                <td>{{$val->title}}</td>
                                 <td><input type="text" class="form-control" style="width:100px"
-                                           onchange="ajaxData('/common/ajaxEditField',{'_token':'{{csrf_token()}}','table':'class','field':'sort','value':this.value,'id':{{$val->id}}})" value="{{$val->sort}}"></td>
+                                           onchange="ajaxData('/common/ajaxEditField',{'_token':
+                                                   '{{csrf_token()}}','table':'article','field':'look',
+                                                   'value':this.value,'id':{{$val->id}}})"
+                                           value="{{$val->look}}"></td></td>
+                                <td><input type="text" class="form-control" style="width:100px"
+                                           onchange="ajaxData('/common/ajaxEditField',{'_token':
+                                                   '{{csrf_token()}}','table':'article','field':'sort',
+                                                   'value':this.value,'id':{{$val->id}}})" value="{{$val->sort}}"></td>
                                 <td>{{$val->created_at}}</td>
                                 <td>{{$val->updated_at}}</td>
                                 <td>
-                                    <a href="/class/curdClass?id={{$val->id}}" title="修改" style="color: #0a0a0a">
+                                    <a href="/article/curdArticle?id={{$val->id}}" title="修改" style="color: #0a0a0a">
                                         <i class="fa  fa-edit"></i>
                                     </a>
-                                    <a href="/class/delClass?id={{$val->id}}&status=9" title="删除" style="color: #0a0a0a">
+                                    <a href="/article/curdArticle?id={{$val->id}}&status=9" title="删除" style="color: #0a0a0a">
                                         <i class="fa fa-trash-o"></i>
                                     </a>
                                 </td>

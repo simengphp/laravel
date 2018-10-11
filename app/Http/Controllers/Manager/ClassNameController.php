@@ -22,7 +22,7 @@ class ClassNameController extends BaseController
 
     public function classList(Request $request)
     {
-        $list = $this->model_obj->classList(1, $request);
+        $list = $this->model_obj->classList(5, $request);
         return view('manager.class.className', ['top_name'=>'文章分类列表','version'=>'1.0',
             'list'=>$list,'request'=>$request]);
     }
@@ -34,11 +34,12 @@ class ClassNameController extends BaseController
             if ($auth) {
                 return redirect()->back()->withErrors($auth)->withInput();
             }
+            $data = $request->post();
             $ret = $this->model_obj->curdModel($request);
             if ($ret) {
-                return redirect('class/classList')->with('success', '添加成功');
+                return redirect('class/classList')->with('success', isset($data['id'])&&$data['id']>0?'修改成功':'添加成功');
             } else {
-                return redirect('class/classList')->with('error', '添加失败');
+                return redirect('class/classList')->with('success', isset($data['id'])&&$data['id']>0?'修改失败':'添加失败');
             }
         } else {
             if ($request->get('id')) {
