@@ -80,7 +80,8 @@
                                 <select class="form-control" id="pid" name="class_id">
                                     <option value="">请选择文章分类...</option>
                                     @foreach($ret->class_list as $val)
-                                    <option value="{{$val->id}}" {{ old('class_id') == $val->id ?'selected':'' }}>{{$val->class_name}}</option>
+                                    <option value="{{$val->id}}" {{ old('class_id') == $val->id ||
+                                    isset($ret['class_id'])&&$ret['class_id'] == $val->id?'selected':'' }}>{{$val->class_name}}</option>
                                     @endforeach
                                 </select>
                             </div>

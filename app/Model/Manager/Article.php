@@ -16,10 +16,10 @@ class Article extends Base
     use SoftDeletes;
     protected $table = 'article';
     protected $model = null;
+    public $timestamps = true;
     /**白名单字段*/
     protected $fillable = ['pic', 'title', 'content', 'desc', 'author', 'look', 'sort', 'key',
         'class_id'];
-    public $timestamps = true;
     public function fromDateTime($value)
     {
         return empty($value) ?? $this->getTimeFormat();
