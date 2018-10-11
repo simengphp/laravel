@@ -13,8 +13,9 @@
                     </div>
                     <div class="col-xs-6">
                         <form action="" class="" method="post">
+                            {{ csrf_field() }}
                             <div class="col-xs-8">
-                            <input class="form-control" id="inputEmail3" name="search" value=""
+                            <input class="form-control" id="inputEmail3" name="search" value="{{$request['search']}}"
                                        placeholder="导航名称" type="text">
                             </div>
                             <div class="col-xs-3">

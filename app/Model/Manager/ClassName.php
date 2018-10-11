@@ -41,10 +41,20 @@ class ClassName extends Base
         parent::__construct($attributes);
     }
 
-    public function classList($num)
+    public function classList($num, Request $request)
     {
-        $ret = ClassName::orderBy('created_at', 'desc')->orderBy('sort', 'asc')->paginate($num);
-        return $ret;
+        $search = $request->all();
+        if (isset($search['search'])) {
+            $ret = ClassName::where('class_name', 'like', '%'.$search['search'].'%')->orderBy('created_at', 'desc')
+                ->orderBy('sort', 'asc')->paginate($num);
+            $ret->appends(array(
+                'search' => $search['search'],
+            ));
+            return $ret;
+        } else {
+            $ret = ClassName::orderBy('created_at', 'desc')->orderBy('sort', 'asc')->paginate($num);
+            return $ret;
+        }
     }
 
     public function curdModel(Request $request)

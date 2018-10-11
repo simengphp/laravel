@@ -20,10 +20,11 @@ class ClassNameController extends BaseController
         $this->model_obj = new ClassName();
     }
 
-    public function classList()
+    public function classList(Request $request)
     {
-        $list = $this->model_obj->classList(5);
-        return view('manager.class.className', ['top_name'=>'文章分类列表','version'=>'1.0','list'=>$list]);
+        $list = $this->model_obj->classList(1, $request);
+        return view('manager.class.className', ['top_name'=>'文章分类列表','version'=>'1.0',
+            'list'=>$list,'request'=>$request]);
     }
 
     public function curdClass(Request $request)

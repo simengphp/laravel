@@ -12,6 +12,7 @@ class ArticleController extends BaseController
 {
     public function articleList()
     {
-        return view('manager.article.articleList');
+        $list=[];
+        return view('manager.article.articleList', ['top_name'=>'文章', 'version'=>'1.0']);
     }
 }

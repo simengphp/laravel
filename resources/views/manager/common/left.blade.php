@@ -36,7 +36,7 @@
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="/class/classList"><i class="fa fa-circle-o"></i>分类列表</a></li>
-                    <li><a href="/article/articles"><i class="fa fa-circle-o"></i> ChartJS</a></li>
+                    <li><a href="/article/articles"><i class="fa fa-circle-o"></i>文章列表</a></li>
                 </ul>
             </li>
         </ul>
