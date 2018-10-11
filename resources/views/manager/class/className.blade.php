@@ -1,6 +1,5 @@
 @extends('manager.index.index')
 @section('content')
-    <section class="content">
     <div class="row">
         @include('manager.common.ajaxErrorSuccess')
         @include('manager.common.message')
@@ -68,5 +67,4 @@
         <!-- /.col -->
     </div>
     <!-- /.row -->
-    </section>
 @stop

@@ -3,6 +3,8 @@
     <!-- Content Header (Page header) -->
     @include('manager.common.title')
     <!-- Main content -->
-    @yield('content', "111111111")
+    <section class="content">
+            @yield('content')
+    </section>
     <!-- /.content -->
 </div>

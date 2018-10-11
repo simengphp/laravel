@@ -1,6 +1,5 @@
 @extends('manager.index.index')
 @section('content')
-    <section class="content">
         <div class="row">
             <div class="col-md-12">
                 <div class="box box-info">
@@ -53,5 +52,4 @@
                 </div>
             </div>
         </div>
-    </section>
 @stop
