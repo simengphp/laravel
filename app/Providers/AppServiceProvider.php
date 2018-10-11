@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Model\Manager\Base;
 use App\Model\Manager\ClassName;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
@@ -21,7 +22,7 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
         Validator::extend('uniqueCommon', function ($attribute, $value, $parameters) use ($request) {
             $id = $request->post('id');
-            $ret = (new ClassName())->getUnique($value, $id);
+            $ret = (new Base())->getUnique($parameters[0], $attribute, $value, $id);
             if ($ret->isEmpty()) {
                 return true;
             }

@@ -18,4 +18,16 @@ class Base extends Model
         $ret = DB::table($table)->where('id', $id)->limit(1)->update([$field=>$val, 'updated_at'=>time()]);
         return $ret;
     }
+
+
+    public function getUnique($model, $field, $class_name, $id = 0)
+    {
+        if ($id > 0) {
+            return DB::table($model)
+                ->where($field, $class_name)->where('deleted_at', null)->
+                where('id', '<>', $id)->get();
+        }
+        return DB::table($model)
+            ->where($field, $class_name)->where('deleted_at', null)->get();
+    }
 }

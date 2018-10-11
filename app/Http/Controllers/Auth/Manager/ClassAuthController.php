@@ -11,7 +11,7 @@ namespace App\Http\Controllers\Auth\Manager;
 class ClassAuthController extends BaseAuthController
 {
     protected $rules = [
-        'class_name' => 'required|uniqueCommon',
+        'class_name' => 'required|uniqueCommon:class',
         'sort'      =>'required'
     ];
 
