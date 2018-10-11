@@ -15,7 +15,7 @@
     $.each(treeview,function(index,item){
         $(item).removeClass('menu-open active');
     });
-    var controller = "{$controller}".toLowerCase();
+    var controller = "{{$controller}}".toLowerCase();
     $('.'+controller).addClass('menu-open active');
     //$('.'+controller).
     // $('.treeview').click(function () {

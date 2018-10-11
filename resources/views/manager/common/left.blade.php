@@ -26,6 +26,19 @@
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">主菜单</li>
+            <li class="treeview class article">
+                <a href="#">
+                    <i class="fa fa-book"></i>
+                    <span>文章管理</span>
+                    <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="/class/classList"><i class="fa fa-circle-o"></i>分类列表</a></li>
+                    <li><a href="/article/articles"><i class="fa fa-circle-o"></i>文章列表</a></li>
+                </ul>
+            </li>
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-book"></i>

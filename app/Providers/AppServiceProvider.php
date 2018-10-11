@@ -3,10 +3,10 @@
 namespace App\Providers;
 
 use App\Model\Manager\Base;
-use App\Model\Manager\ClassName;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -20,6 +20,7 @@ class AppServiceProvider extends ServiceProvider
     {
         //
         Schema::defaultStringLength(191);
+        /**自定义验证方法*/
         Validator::extend('uniqueCommon', function ($attribute, $value, $parameters) use ($request) {
             $id = $request->post('id');
             $ret = (new Base())->getUnique($parameters[0], $attribute, $value, $id);
@@ -28,6 +29,9 @@ class AppServiceProvider extends ServiceProvider
             }
             return false;
         });
+        /**设置全局模板变量*/
+        list($controller, $action) = explode('/', $request->path());
+        View::share("controller", $controller);
     }
 
     /**
