@@ -23,7 +23,8 @@ class ArticleController extends BaseController
 
     public function articleList(Request $request)
     {
-        $list=$this->model->articleList(5);
+        $data = $request->all();
+        $list=$this->model->articleList(5, $data);
         return view('manager.article.articleList', ['top_name'=>'文章', 'version'=>'1.0',
             'list'=>$list,'request'=>$request]);
     }

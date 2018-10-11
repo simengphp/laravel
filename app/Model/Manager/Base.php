@@ -30,4 +30,15 @@ class Base extends Model
         return DB::table($model)
             ->where($field, $class_name)->where('deleted_at', null)->get();
     }
+
+    public function getTime($time)
+    {
+        list($startTime, $endTime) = explode('-', $time);
+        $startTime = strtotime($startTime);
+        $endTime = strtotime(trim($endTime));
+        $data['start'] = $startTime;
+        $data['end'] = $endTime;
+        //halt($data);
+        return $data;
+    }
 }

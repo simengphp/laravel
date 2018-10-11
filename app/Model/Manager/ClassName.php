@@ -45,7 +45,7 @@ class ClassName extends Base
     {
         $search = $request->all();
         if (isset($search['search'])) {
-            $ret = ClassName::where('class_name', 'like', '%'.$search['search'].'%')
+            $ret = ClassName::where('class_name', 'like', '%'.trim($search['search']).'%')
                 ->orderBy('sort', 'asc')->orderBy('created_at', 'desc')->paginate($num);
             $ret->appends(array(
                 'search' => $search['search'],

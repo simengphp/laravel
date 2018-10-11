@@ -36,9 +36,28 @@ class Article extends Base
         parent::__construct($attributes);
     }
 
-    public function articleList($num)
+    public function articleList($num, $data)
     {
-        $list = Article::orderBy('created_at', 'desc')->orderBy('sort', 'asc')->paginate($num);
+        if (isset($data['search_date']) && $data['search_date'] != '请选择日期') {
+            $search_date = $this->getTime($data['search_date']);
+            $start_time = $search_date['start']??'';
+            $end_time = $search_date['end']??time();
+        } else {
+            $start_time = $search_date['start']??'';
+            $end_time = $search_date['end']??time();
+        }
+        if (isset($data['search']) || isset($search_date)) {
+            $list = Article::where('title', 'like', '%'.trim($data['search']).'%')->
+            where('created_at', '>=', $start_time)->
+            where('updated_at', '<=', $end_time)->orderBy('created_at', 'desc')->
+            orderBy('sort', 'asc')->paginate($num);
+            $list->appends([
+                'search'        =>$data['search'],
+                'search_date'   =>$data['search_date'],
+            ]);
+        } else {
+            $list = Article::orderBy('created_at', 'desc')->orderBy('sort', 'asc')->paginate($num);
+        }
         return $list;
     }
 

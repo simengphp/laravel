@@ -11,11 +11,22 @@
                             <button type="button" class="btn btn-primary">添加</button>
                         </a>
                     </div>
-                    <div class="col-xs-6">
+                    <div class="col-xs-8">
                         <form action="" class="" method="post">
-                            <div class="col-xs-8">
-                                <input class="form-control" id="inputEmail3" name="search" value=""
+                            {{csrf_field()}}
+                            <div class="col-xs-4">
+                                <input class="form-control" id="inputEmail3" name="search" value="{{$request['search']}}"
                                        placeholder="文章标题" type="text">
+                            </div>
+                            <div class="col-xs-5">
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-clock-o"></i>
+                                    </div>
+                                    <input type="text" name="search_date" value="{{$request['search_date']}}"
+                                           placeholder="选择时间" class="form-control pull-right"
+                                           id="reservationtime">
+                                </div>
                             </div>
                             <div class="col-xs-3">
                                 <button type="submit" class="btn btn-primary">查询</button>
