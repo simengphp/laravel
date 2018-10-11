@@ -18,4 +18,6 @@ Route::group(['middleware'=>'manager'], function () {
     Route::any('/class/classList', 'Manager\ClassNameController@classList');
     Route::any('/class/curdClass', 'Manager\ClassNameController@curdClass');
     Route::any('/class/delClass', 'Manager\ClassNameController@delClass');
+    /**配置管理*/
+    Route::any('/config/config', 'Manager\ConfigController@config');
 });
