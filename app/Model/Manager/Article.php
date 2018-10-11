@@ -22,7 +22,7 @@ class Article extends Base
         'class_id'];
     public function fromDateTime($value)
     {
-        return empty($value) ?? $this->getTimeFormat();
+        return empty($value)?$value:$this->getTimeFormat();
     }
 
     public function getTimeFormat()
