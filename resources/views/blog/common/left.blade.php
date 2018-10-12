@@ -35,8 +35,8 @@
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="/class/classList"><i class="fa fa-circle-o"></i>分类列表</a></li>
-                    <li><a href="/article/articles"><i class="fa fa-circle-o"></i>文章列表</a></li>
+                    <li><a href="/blog/class/classList"><i class="fa fa-circle-o"></i>分类列表</a></li>
+                    <li><a href="/blog/article/articles"><i class="fa fa-circle-o"></i>文章列表</a></li>
                 </ul>
             </li>
             <li class="treeview config">
@@ -48,7 +48,7 @@
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="/config/config"><i class="fa fa-circle-o"></i>配置管理</a></li>
+                    <li><a href="/blog/config/config"><i class="fa fa-circle-o"></i>配置管理</a></li>
                 </ul>
             </li>
             <li class="treeview stack">
@@ -60,7 +60,7 @@
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="/stack/stack"><i class="fa fa-circle-o"></i>贡献者</a></li>
+                    <li><a href="/blog/stack/stack"><i class="fa fa-circle-o"></i>贡献者</a></li>
                 </ul>
             </li>
         </ul>

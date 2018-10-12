@@ -1,13 +1,13 @@
-@extends('manager.index.index')
+@extends('blog.index.index')
 @section('content')
     <div class="row">
-        @include('manager.common.ajaxErrorSuccess')
-        @include('manager.common.message')
+        @include('blog.common.ajaxErrorSuccess')
+        @include('blog.common.message')
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header container">
                     <div class="col-xs-1">
-                        <a href="/article/curdArticle">
+                        <a href="/blog/article/curdArticle">
                             <button type="button" class="btn btn-primary">添加</button>
                         </a>
                     </div>
@@ -54,21 +54,21 @@
                                 <td>{{$val->id}}</td>
                                 <td>{{$val->title}}</td>
                                 <td><input type="text" class="form-control" style="width:100px"
-                                           onchange="ajaxData('/common/ajaxEditField',{'_token':
+                                           onchange="ajaxData('/blog/common/ajaxEditField',{'_token':
                                                    '{{csrf_token()}}','table':'article','field':'look',
                                                    'value':this.value,'id':{{$val->id}}})"
                                            value="{{$val->look}}"></td></td>
                                 <td><input type="text" class="form-control" style="width:100px"
-                                           onchange="ajaxData('/common/ajaxEditField',{'_token':
+                                           onchange="ajaxData('/blog/common/ajaxEditField',{'_token':
                                                    '{{csrf_token()}}','table':'article','field':'sort',
                                                    'value':this.value,'id':{{$val->id}}})" value="{{$val->sort}}"></td>
                                 <td>{{$val->created_at}}</td>
                                 <td>{{$val->updated_at}}</td>
                                 <td>
-                                    <a href="/article/curdArticle?id={{$val->id}}" title="修改" style="color: #0a0a0a">
+                                    <a href="/blog/article/curdArticle?id={{$val->id}}" title="修改" style="color: #0a0a0a">
                                         <i class="fa  fa-edit"></i>
                                     </a>
-                                    <a href="/article/remove?id={{$val->id}}&status=9" title="删除" style="color: #0a0a0a">
+                                    <a href="/blog/article/remove?id={{$val->id}}&status=9" title="删除" style="color: #0a0a0a">
                                         <i class="fa fa-trash-o"></i>
                                     </a>
                                 </td>

@@ -1,4 +1,4 @@
-@extends('manager.index.index')
+@extends('blog.index.index')
 @section('content')
     <div class="row">
         <div class="col-md-12">
@@ -11,7 +11,7 @@
                 <div class="row">
                     <label for="name" class="col-sm-2 control-label"></label>
                     <div class="col-sm-6">
-                        @include('manager.common.editError')
+                        @include('blog.common.editError')
                     </div>
                 </div>
                 <!-- form start -->

@@ -1,4 +1,4 @@
-@extends('manager.index.index')
+@extends('blog.index.index')
 @section('content')
     <div class="row">
         <div class="col-xs-12">

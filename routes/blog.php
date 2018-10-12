@@ -21,17 +21,17 @@ Route::group(['middleware'=>'blog'], function () {
 
     Route::any('/blog/loginOut', 'Blog\ManagerController@loginOut');
 
-    Route::any('/article/articles', 'Blog\ArticleController@articleList');
-    Route::any('/article/curdArticle', 'Blog\ArticleController@curdArticle');
-    Route::any('/article/remove', 'Blog\ArticleController@remove');
+    Route::any('/blog/article/articles', 'Blog\ArticleController@articleList');
+    Route::any('/blog/article/curdArticle', 'Blog\ArticleController@curdArticle');
+    Route::any('/blog/article/remove', 'Blog\ArticleController@remove');
     /**文章分类*/
-    Route::any('/class/classList', 'Blog\ClassNameController@classList');
-    Route::any('/class/curdClass', 'Blog\ClassNameController@curdClass');
-    Route::any('/class/delClass', 'Blog\ClassNameController@delClass');
+    Route::any('/blog/class/classList', 'Blog\ClassNameController@classList');
+    Route::any('/blog/class/curdClass', 'Blog\ClassNameController@curdClass');
+    Route::any('/blog/class/delClass', 'Blog\ClassNameController@delClass');
     /**配置管理*/
-    Route::any('/config/config', 'Blog\ConfigController@config');
+    Route::any('/blog/config/config', 'Blog\ConfigController@config');
     /**贡献者管理*/
-    Route::any('/stack/stack', 'Blog\StackController@stack');
-    Route::any('/stack/curdStack', 'Blog\StackController@curdStack');
-    Route::any('/stack/remove', 'Blog\StackController@remove');
+    Route::any('/blog/stack/stack', 'Blog\StackController@stack');
+    Route::any('/blog/stack/curdStack', 'Blog\StackController@curdStack');
+    Route::any('/blog/stack/remove', 'Blog\StackController@remove');
 });
