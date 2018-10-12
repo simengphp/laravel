@@ -26,13 +26,13 @@ class ConfigController extends BaseController
             $data = $request->post();
             $ret = $this->model_obj->curdModel($request);
             if ($ret) {
-                return redirect('config/config')->with('success', isset($data['id'])&&$data['id']>0?'修改成功':'添加成功');
+                return redirect('blog/config/config')->with('success', isset($data['id'])&&$data['id']>0?'修改成功':'添加成功');
             } else {
-                return redirect('config/config')->with('success', isset($data['id'])&&$data['id']>0?'修改失败':'添加失败');
+                return redirect('blog/config/config')->with('success', isset($data['id'])&&$data['id']>0?'修改失败':'添加失败');
             }
         } else {
             $ret = $this->model_obj->getOneDetail(1);
-            return view('manager.config.config', ['top_name'=>'配置管理','version'=>'1.0','ret'=>$ret]);
+            return view('blog.config.config', ['top_name'=>'配置管理','version'=>'1.0','ret'=>$ret]);
         }
     }
 }

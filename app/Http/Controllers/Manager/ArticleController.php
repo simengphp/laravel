@@ -49,7 +49,7 @@ class ArticleController extends BaseController
             if ($ret) {
                 return redirect('article/articles')->with('success', isset($data['id'])&&$data['id']>0?'修改成功':'添加成功');
             }
-            return redirect('article/classList')->with('success', isset($data['id'])&&$data['id']>0?'修改失败':'添加失败');
+            return redirect('article/articles')->with('success', isset($data['id'])&&$data['id']>0?'修改失败':'添加失败');
         } else {
             if ($request->get('id')) {
                 $ret = $this->model->getOneDetail($request->get('id'));

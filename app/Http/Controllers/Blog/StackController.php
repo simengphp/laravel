@@ -25,7 +25,7 @@ class StackController extends BaseController
     {
         $data = $request->all();
         $list=$this->model->modelList(5, $data);
-        return view('manager.stack.stackList', ['top_name'=>'贡献者', 'version'=>'1.0',
+        return view('blog.stack.stackList', ['top_name'=>'贡献者', 'version'=>'1.0',
             'list'=>$list,'request'=>$request]);
     }
 
@@ -46,9 +46,9 @@ class StackController extends BaseController
             $data['sort'] = $data['sort']??0;
             $ret = $this->model->curdModel($data);
             if ($ret) {
-                return redirect('stack/stack')->with('success', isset($data['id'])&&$data['id']>0?'修改成功':'添加成功');
+                return redirect('blog/stack/stack')->with('success', isset($data['id'])&&$data['id']>0?'修改成功':'添加成功');
             }
-            return redirect('stack/stack')->with('success', isset($data['id'])&&$data['id']>0?'修改失败':'添加失败');
+            return redirect('blog/stack/stack')->with('success', isset($data['id'])&&$data['id']>0?'修改失败':'添加失败');
         } else {
             if ($request->get('id')) {
                 $ret = $this->model->getOneDetail($request->get('id'));
@@ -56,7 +56,7 @@ class StackController extends BaseController
                 $ret = $this->model;
             }
             $ret['class_list'] = (new ClassName())->classList(20, $request);
-            return view('manager.stack.curdStack', ['top_name'=>'贡献者', 'version'=>'1.0',
+            return view('blog.stack.curdStack', ['top_name'=>'贡献者', 'version'=>'1.0',
                 'ret'=>$ret]);
         }
     }
@@ -65,9 +65,9 @@ class StackController extends BaseController
     {
         $ret = $this->model->delData($request->get('id'));
         if ($ret) {
-            return redirect('stack/stack')->with('success', '删除成功');
+            return redirect('blog/stack/stack')->with('success', '删除成功');
         } else {
-            return redirect('stack/stack')->with('error', '删除失败');
+            return redirect('blog/stack/stack')->with('error', '删除失败');
         }
     }
 }

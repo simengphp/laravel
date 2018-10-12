@@ -54,7 +54,7 @@
         <!-- /.social-auth-links -->
 
         {{--<a href="#">I forgot my password</a><br>--}}
-        {{--<a href="register.html" class="text-center">Register a new membership</a>--}}
+        <a href="/blog/manager/register" class="text-center">我已经有账号,直接登录</a>
 
     </div>
     <!-- /.login-box-body -->

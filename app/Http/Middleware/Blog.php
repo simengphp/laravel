@@ -15,8 +15,8 @@ class Blog
      */
     public function handle($request, Closure $next)
     {
-        if (!session('blog_id') && !$request->is('blog/login') && !$request->is('blog/register')) {
-            return redirect('/blog/login');
+        if (!session('blog_id') && !$request->is('blog/manager/login') && !$request->is('blog/manager/register')) {
+            return redirect('/blog/manager/login');
         }
         return $next($request);
     }

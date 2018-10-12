@@ -25,7 +25,7 @@ class ArticleController extends BaseController
     {
         $data = $request->all();
         $list=$this->model->articleList(5, $data);
-        return view('manager.article.articleList', ['top_name'=>'文章', 'version'=>'1.0',
+        return view('blog.article.articleList', ['top_name'=>'文章', 'version'=>'1.0',
             'list'=>$list,'request'=>$request]);
     }
 
@@ -47,9 +47,10 @@ class ArticleController extends BaseController
             $data['look'] = $data['look']??0;
             $ret = $this->model->curdArticle($data);
             if ($ret) {
-                return redirect('article/articles')->with('success', isset($data['id'])&&$data['id']>0?'修改成功':'添加成功');
+                return redirect('blog/article/articles')->
+                with('success', isset($data['id'])&&$data['id']>0?'修改成功':'添加成功');
             }
-            return redirect('article/classList')->with('success', isset($data['id'])&&$data['id']>0?'修改失败':'添加失败');
+            return redirect('blog/article/articles')->with('success', isset($data['id'])&&$data['id']>0?'修改失败':'添加失败');
         } else {
             if ($request->get('id')) {
                 $ret = $this->model->getOneDetail($request->get('id'));
@@ -57,7 +58,7 @@ class ArticleController extends BaseController
                 $ret = $this->model;
             }
             $ret['class_list'] = (new ClassName())->classList(20, $request);
-            return view('manager.article.curdArticle', ['top_name'=>'文章', 'version'=>'1.0',
+            return view('blog.article.curdArticle', ['top_name'=>'文章', 'version'=>'1.0',
                 'ret'=>$ret]);
         }
     }
@@ -66,9 +67,9 @@ class ArticleController extends BaseController
     {
         $ret = $this->model->delData($request->get('id'));
         if ($ret) {
-            return redirect('article/articles')->with('success', '删除成功');
+            return redirect('blog/article/articles')->with('success', '删除成功');
         } else {
-            return redirect('article/articles')->with('error', '删除失败');
+            return redirect('blog/article/articles')->with('error', '删除失败');
         }
     }
 }

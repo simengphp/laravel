@@ -50,7 +50,7 @@
                 </ul>
             </div>
         @endif
-        <a href="login.html" class="text-center">我已经有账号,直接登录</a>
+        <a href="/blog/manager/login" class="text-center">我已经有账号,直接登录</a>
     </div>
     <!-- /.form-box -->
 </div>

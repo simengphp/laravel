@@ -230,7 +230,7 @@
                         </li>
                         <li class="user-footer">
                             <div class="pull-right">
-                                <a href="/manager/loginOut" class="btn btn-default btn-flat">退出登录</a>
+                                <a href="/blog/manager/out" class="btn btn-default btn-flat">退出登录</a>
                             </div>
                         </li>
                     </ul>

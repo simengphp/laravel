@@ -11,15 +11,15 @@
 |
 */
 Route::group(['middleware'=>'blog'], function () {
-    Route::get('/blog/index', 'Blog\IndexController@index');
+    Route::get('/blog/manager/index', 'Blog\IndexController@index');
     /**登录注册操作*/
-    Route::any('/blog/register', 'Blog\ManagerController@register');
-    Route::any('/blog/login', 'Blog\ManagerController@login');
-    Route::get('/blog/out', 'Blog\ManagerController@loginOut');
+    Route::any('/blog/manager/register', 'Blog\ManagerController@register');
+    Route::any('/blog/manager/login', 'Blog\ManagerController@login');
+    Route::get('/blog/manager/out', 'Blog\ManagerController@loginOut');
 
-    Route::any('/common/ajaxEditField', 'Blog\BaseController@ajaxEditField');
+    Route::any('/blog/common/ajaxEditField', 'Blog\BaseController@ajaxEditField');
 
-    Route::any('/blog/loginOut', 'Blog\ManagerController@loginOut');
+    Route::any('/blog/manager/loginOut', 'Blog\ManagerController@loginOut');
 
     Route::any('/blog/article/articles', 'Blog\ArticleController@articleList');
     Route::any('/blog/article/curdArticle', 'Blog\ArticleController@curdArticle');

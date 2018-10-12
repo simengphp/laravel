@@ -32,9 +32,9 @@ class ManagerController extends BaseController
             }
             $data = $request->post();
             if ($this->admin_obj->registerMember($data)) {
-                return redirect('blog/index')->with('success', '注册成功');
+                return redirect('blog/manager/index')->with('success', '注册成功');
             }
-            return redirect('blog/index')->with('success', '注册失败');
+            return redirect('blog/manager/index')->with('success', '注册失败');
         }
         return view('blog.manager.register');
     }
@@ -51,7 +51,7 @@ class ManagerController extends BaseController
             if ($ret['code'] == 0) {
                 return redirect()->back()->with('error', $ret['error'])->withInput();
             }
-            return redirect('blog/index');
+            return redirect('blog/manager/index');
         } else {
             return view('blog.manager.login');
         }
@@ -60,7 +60,7 @@ class ManagerController extends BaseController
     public function loginOut()
     {
         Session::flush();
-        return redirect('blog/login');
+        return redirect('blog/manager/login');
     }
 
 }
