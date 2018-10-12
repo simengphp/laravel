@@ -56,8 +56,8 @@ class ClassNameController extends BaseController
      */
     public function delClass(Request $request)
     {
-        $student = $this->model_obj->getOneDetail($request->get('id'));
-        if ($student->delete()) {
+        $ret = $this->model_obj->delData($request->get('id'));
+        if ($ret) {
             return redirect('class/classList')->with('success', '删除成功');
         } else {
             return redirect('class/classList')->with('error', '删除失败');

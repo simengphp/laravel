@@ -85,4 +85,10 @@ class Article extends Base
     {
         return Article::find($id);
     }
+
+    public function delData($id)
+    {
+        $model = Article::find($id);
+        return $model->delete();
+    }
 }

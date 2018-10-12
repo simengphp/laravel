@@ -8,31 +8,31 @@
 
 namespace App\Http\Controllers\Manager;
 
-use App\Http\Controllers\Auth\Manager\ArticleAuthController;
-use App\Model\Manager\Article;
+use App\Http\Controllers\Auth\Manager\StackAuthController;
 use App\Model\Manager\ClassName;
+use App\Model\Manager\Stack;
 use Illuminate\Http\Request;
 
-class ArticleController extends BaseController
+class StackController extends BaseController
 {
     protected $model = null;
     public function __construct()
     {
-        $this->model = new Article();
+        $this->model = new Stack();
     }
 
-    public function articleList(Request $request)
+    public function stack(Request $request)
     {
         $data = $request->all();
-        $list=$this->model->articleList(5, $data);
-        return view('manager.article.articleList', ['top_name'=>'文章', 'version'=>'1.0',
+        $list=$this->model->modelList(5, $data);
+        return view('manager.stack.stackList', ['top_name'=>'贡献者', 'version'=>'1.0',
             'list'=>$list,'request'=>$request]);
     }
 
-    public function curdArticle(Request $request)
+    public function curdStack(Request $request)
     {
         if ($request->isMethod('post')) {
-            $auth_ret = (new ArticleAuthController())->goCheck($request);
+            $auth_ret = (new StackAuthController())->goCheck($request);
             if ($auth_ret) {
                 return redirect()->back()->withErrors($auth_ret)->withInput();
             }
@@ -43,13 +43,12 @@ class ArticleController extends BaseController
             }
             $pic = isset($data['pic'])?$data['pic']:'';
             $data['pic'] = $file_img?$file_img:$pic;
-            $data['author'] = $data['author']??'admin';
-            $data['look'] = $data['look']??0;
-            $ret = $this->model->curdArticle($data);
+            $data['sort'] = $data['sort']??0;
+            $ret = $this->model->curdModel($data);
             if ($ret) {
-                return redirect('article/articles')->with('success', isset($data['id'])&&$data['id']>0?'修改成功':'添加成功');
+                return redirect('stack/stack')->with('success', isset($data['id'])&&$data['id']>0?'修改成功':'添加成功');
             }
-            return redirect('article/classList')->with('success', isset($data['id'])&&$data['id']>0?'修改失败':'添加失败');
+            return redirect('stack/stack')->with('success', isset($data['id'])&&$data['id']>0?'修改失败':'添加失败');
         } else {
             if ($request->get('id')) {
                 $ret = $this->model->getOneDetail($request->get('id'));
@@ -57,7 +56,7 @@ class ArticleController extends BaseController
                 $ret = $this->model;
             }
             $ret['class_list'] = (new ClassName())->classList(20, $request);
-            return view('manager.article.curdArticle', ['top_name'=>'文章', 'version'=>'1.0',
+            return view('manager.stack.curdStack', ['top_name'=>'贡献者', 'version'=>'1.0',
                 'ret'=>$ret]);
         }
     }
@@ -66,9 +65,9 @@ class ArticleController extends BaseController
     {
         $ret = $this->model->delData($request->get('id'));
         if ($ret) {
-            return redirect('article/articles')->with('success', '删除成功');
+            return redirect('stack/stack')->with('success', '删除成功');
         } else {
-            return redirect('article/articles')->with('error', '删除失败');
+            return redirect('stack/stack')->with('error', '删除失败');
         }
     }
 }

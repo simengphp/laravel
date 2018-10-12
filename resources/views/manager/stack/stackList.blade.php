@@ -7,7 +7,7 @@
             <div class="box">
                 <div class="box-header container">
                     <div class="col-xs-1">
-                        <a href="/article/curdArticle">
+                        <a href="/stack/curdStack">
                             <button type="button" class="btn btn-primary">添加</button>
                         </a>
                     </div>
@@ -16,17 +16,7 @@
                             {{csrf_field()}}
                             <div class="col-xs-4">
                                 <input class="form-control" id="inputEmail3" name="search" value="{{$request['search']}}"
-                                       placeholder="文章标题" type="text">
-                            </div>
-                            <div class="col-xs-5">
-                                <div class="input-group">
-                                    <div class="input-group-addon">
-                                        <i class="fa fa-clock-o"></i>
-                                    </div>
-                                    <input type="text" name="search_date" value="{{$request['search_date']}}"
-                                           placeholder="选择时间" class="form-control pull-right"
-                                           id="reservationtime">
-                                </div>
+                                       placeholder="贡献者名称/联系方式" type="text">
                             </div>
                             <div class="col-xs-3">
                                 <button type="submit" class="btn btn-primary">查询</button>
@@ -40,8 +30,9 @@
                         <thead>
                         <tr>
                             <th>编号</th>
-                            <th>文章标题</th>
-                            <th>浏览量</th>
+                            <th>名字</th>
+                            <th>网站名称</th>
+                            <th>联系方式</th>
                             <th>排序</th>
                             <th>创建时间</th>
                             <th>修改时间</th>
@@ -52,23 +43,24 @@
                         @foreach($list as $val)
                             <tr>
                                 <td>{{$val->id}}</td>
-                                <td>{{$val->title}}</td>
+                                <td>{{$val->name}}</td>
                                 <td><input type="text" class="form-control" style="width:100px"
                                            onchange="ajaxData('/common/ajaxEditField',{'_token':
-                                                   '{{csrf_token()}}','table':'article','field':'look',
+                                                   '{{csrf_token()}}','table':'stack','field':'website',
                                                    'value':this.value,'id':{{$val->id}}})"
-                                           value="{{$val->look}}"></td></td>
+                                           value="{{$val->website}}"></td></td>
+                                <td>{{$val->contact}}</td>
                                 <td><input type="text" class="form-control" style="width:100px"
                                            onchange="ajaxData('/common/ajaxEditField',{'_token':
-                                                   '{{csrf_token()}}','table':'article','field':'sort',
+                                                   '{{csrf_token()}}','table':'stack','field':'sort',
                                                    'value':this.value,'id':{{$val->id}}})" value="{{$val->sort}}"></td>
                                 <td>{{$val->created_at}}</td>
                                 <td>{{$val->updated_at}}</td>
                                 <td>
-                                    <a href="/article/curdArticle?id={{$val->id}}" title="修改" style="color: #0a0a0a">
+                                    <a href="/stack/curdStack?id={{$val->id}}" title="修改" style="color: #0a0a0a">
                                         <i class="fa  fa-edit"></i>
                                     </a>
-                                    <a href="/article/remove?id={{$val->id}}&status=9" title="删除" style="color: #0a0a0a">
+                                    <a href="/stack/remove?id={{$val->id}}&status=9" title="删除" style="color: #0a0a0a">
                                         <i class="fa fa-trash-o"></i>
                                     </a>
                                 </td>

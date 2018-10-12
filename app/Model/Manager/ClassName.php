@@ -76,4 +76,10 @@ class ClassName extends Base
     {
         return ClassName::find($id);
     }
+
+    public function delData($id)
+    {
+        $student = ClassName::find($id);
+        return $student->delete();
+    }
 }

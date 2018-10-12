@@ -41,7 +41,7 @@
             </li>
             <li class="treeview config">
                 <a href="#">
-                    <i class="fa fa-book"></i>
+                    <i class="fa fa-gear"></i>
                     <span>配置管理</span>
                     <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
@@ -49,6 +49,18 @@
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="/config/config"><i class="fa fa-circle-o"></i>配置管理</a></li>
+                </ul>
+            </li>
+            <li class="treeview stack">
+                <a href="#">
+                    <i class="fa fa-male"></i>
+                    <span>贡献者管理</span>
+                    <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="/stack/stack"><i class="fa fa-circle-o"></i>贡献者</a></li>
                 </ul>
             </li>
         </ul>
