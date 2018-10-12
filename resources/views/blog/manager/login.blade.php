@@ -1,4 +1,4 @@
-@include('manager.common.header')
+@include('blog.common.header')
 <body class="hold-transition login-page">
 <div class="login-box">
     <div class="login-logo">

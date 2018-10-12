@@ -1,4 +1,4 @@
-@extends('manager.index.index')
+@include('blog.common.header')
 @section('content')
 	<div class="row">
 		<div class="col-md-12">

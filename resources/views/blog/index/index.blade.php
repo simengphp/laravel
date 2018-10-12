@@ -1,12 +1,12 @@
-@include('manager.common.header')
+@include('blog.common.header')
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
-    @include('manager.common.top')
-    @include('manager.common.left')
-    @include('manager.common.content')
-    @include('manager.common.footer')
+    @include('blog.common.top')
+    @include('blog.common.left')
+    @include('blog.common.content')
+    @include('blog.common.footer')
     <div class="control-sidebar-bg"></div>
 </div>
-@include('manager.common.js')
+@include('blog.common.js')
 </body>
 </html>
