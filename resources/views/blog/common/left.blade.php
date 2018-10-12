@@ -35,7 +35,6 @@
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="/blog/class/classList"><i class="fa fa-circle-o"></i>分类列表</a></li>
                     <li><a href="/blog/article/articles"><i class="fa fa-circle-o"></i>文章列表</a></li>
                 </ul>
             </li>
@@ -49,18 +48,6 @@
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="/blog/config/config"><i class="fa fa-circle-o"></i>配置管理</a></li>
-                </ul>
-            </li>
-            <li class="treeview stack">
-                <a href="#">
-                    <i class="fa fa-male"></i>
-                    <span>贡献者管理</span>
-                    <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="/blog/stack/stack"><i class="fa fa-circle-o"></i>贡献者</a></li>
                 </ul>
             </li>
         </ul>
