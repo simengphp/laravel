@@ -12,4 +12,8 @@
 */
 Route::group(['middleware'=>'blog'], function () {
     Route::get('/blog/index', 'Blog\IndexController@index');
+    /**登录注册操作*/
+    Route::any('/blog/register', 'Blog\ManagerController@register');
+    Route::any('/blog/login', 'Blog\ManagerController@login');
+    Route::get('/blog/out', 'Blog\ManagerController@loginOut');
 });
