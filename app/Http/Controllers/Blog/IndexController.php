@@ -2,18 +2,18 @@
 /**
  * Created by PhpStorm.
  * User: Administrator
- * Date: 2018/9/17
- * Time: 21:15
+ * Date: 2018/10/6
+ * Time: 10:16
  */
 
 namespace App\Http\Controllers\Blog;
 
-use App\Http\Controllers\Controller;
-
-class IndexController extends Controller
+class IndexController extends BaseController
 {
     public function index()
     {
-        return '思梦php';
+        $html = '<div>121212</div>';
+        return view('manager.index.default', ['top_name'=>'首页','version'=>'1.0',
+            'default_view'=>$html]);
     }
 }
