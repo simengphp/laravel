@@ -10,10 +10,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['middleware'=>'blog'], function () {
+    Route::get('/blog/index', 'Blog\IndexController@index');
 });
-
-Route::get('/blog/index', 'Blog\IndexController@index');
-

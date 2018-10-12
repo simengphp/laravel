@@ -6,7 +6,7 @@
  * Time: 21:53
  */
 
-namespace App\Http\Controllers\Blog;
+namespace App\Http\Controllers\Blog1;
 
 use App\Http\Controllers\Controller;
 
