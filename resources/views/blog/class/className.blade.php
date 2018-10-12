@@ -5,7 +5,7 @@
         @include('blog.common.message')
         <div class="col-xs-12">
             <div class="box">
-                <div class="box-header container">
+                <div class="box-header">
                     <div class="col-xs-1">
                     <a href="/blog/class/curdClass">
                         <button type="button" class="btn btn-primary">添加</button>
