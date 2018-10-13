@@ -29,7 +29,7 @@ class ConfigController extends BaseController
             }
             $pic = isset($data['pic'])?$data['pic']:'';
             $data['pic'] = $file_img?$file_img:$pic;
-            $ret = $this->model_obj->curdModel($request);
+            $ret = $this->model_obj->curdModel($data);
             if ($ret) {
                 return redirect('blog/config/config')->with('success', isset($data['id'])&&$data['id']>0?'修改成功':'添加成功');
             } else {
@@ -37,7 +37,7 @@ class ConfigController extends BaseController
             }
         } else {
             $ret = $this->model_obj->getOneDetail(session('blog_id'));
-            return view('blog.config.config', ['top_name'=>'配置管理','version'=>'1.0','ret'=>$ret]);
+            return view('blog.config.config', ['top_name'=>'个人配置','version'=>'1.0','ret'=>$ret]);
         }
     }
 }
