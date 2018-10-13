@@ -38,34 +38,16 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="sort" class="col-sm-2 control-label">
-                                文章排序（正序0/1/2/3）<i style="color: red">*</i>
-                            </label>
-                            <div class="col-sm-6">
-                                <input class="form-control" name="sort"
-                                       value="{{ old('sort')??$ret['sort'] }}" id="sort" placeholder="文章排序" type="number">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="look" class="col-sm-2 control-label">
-                                文章浏览量
-                            </label>
-                            <div class="col-sm-6">
-                                <input class="form-control" name="look"
-                                       value="{{ old('look')??$ret['look'] }}" id="look" placeholder="文章浏览量" type="number">
-                            </div>
-                        </div>
-                        <div class="form-group">
                             <label for="key" class="col-sm-2 control-label">
-                                文章关键词（SEO）<i style="color: red">*</i>
+                                文章关键词<i style="color: red">*</i>
                             </label>
                             <div class="col-sm-6">
                                 <input class="form-control" name="key"
-                                       value="{{ old('key')??$ret['key'] }}" id="key" placeholder="文章关键词(用于SEO)" type="text">
+                                       value="{{ old('key')??$ret['key'] }}" id="key" placeholder="文章关键词" type="text">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="" class="col-sm-2 control-label">文章封面图/pdf文件</label>
+                            <label for="" class="col-sm-2 control-label">文章封面图</label>
                             <div class="col-sm-6">
                                 <input name="pic" placeholder="文章封面图" type="file">
                                 <input type="hidden" value="{{ old('pic')??$ret['pic'] }}" name="pic" >

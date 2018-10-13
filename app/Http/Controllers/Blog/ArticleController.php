@@ -8,9 +8,9 @@
 
 namespace App\Http\Controllers\Blog;
 
-use App\Http\Controllers\Auth\Manager\ArticleAuthController;
-use App\Model\Manager\Article;
-use App\Model\Manager\ClassName;
+use App\Http\Controllers\Auth\Blog\ArticleAuthController;
+use App\Model\Blog\Article;
+use App\Model\Blog\ClassName;
 use Illuminate\Http\Request;
 
 class ArticleController extends BaseController
@@ -44,7 +44,6 @@ class ArticleController extends BaseController
             $pic = isset($data['pic'])?$data['pic']:'';
             $data['pic'] = $file_img?$file_img:$pic;
             $data['author'] = $data['author']??'admin';
-            $data['look'] = $data['look']??0;
             $ret = $this->model->curdArticle($data);
             if ($ret) {
                 return redirect('blog/article/articles')->

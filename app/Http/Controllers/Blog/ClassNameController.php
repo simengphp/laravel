@@ -8,8 +8,8 @@
 
 namespace App\Http\Controllers\Blog;
 
-use App\Http\Controllers\Auth\Manager\ClassAuthController;
-use App\Model\Manager\ClassName;
+use App\Http\Controllers\Auth\Blog\ClassAuthController;
+use App\Model\Blog\ClassName;
 use Illuminate\Http\Request;
 
 class ClassNameController extends BaseController

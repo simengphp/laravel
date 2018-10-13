@@ -18,7 +18,7 @@ class Article extends Base
     protected $model = null;
     public $timestamps = true;
     /**白名单字段*/
-    protected $fillable = ['pic', 'title', 'content', 'desc', 'author', 'look', 'sort', 'key',
+    protected $fillable = ['pic', 'title', 'content', 'desc', 'author', 'key',
         'class_id'];
     public function fromDateTime($value)
     {
@@ -70,8 +70,6 @@ class Article extends Base
             $article->content = $data['content'];
             $article->desc = $data['desc'];
             $article->author = $data['author'];
-            $article->look = $data['look'];
-            $article->sort = $data['sort'];
             $article->key = $data['key'];
             $article->class_id = $data['class_id'];
             $ret = $article->save();

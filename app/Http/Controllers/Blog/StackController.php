@@ -8,9 +8,9 @@
 
 namespace App\Http\Controllers\Blog;
 
-use App\Http\Controllers\Auth\Manager\StackAuthController;
-use App\Model\Manager\ClassName;
-use App\Model\Manager\Stack;
+use App\Http\Controllers\Auth\Blog\StackAuthController;
+use App\Model\Blog\ClassName;
+use App\Model\Blog\Stack;
 use Illuminate\Http\Request;
 
 class StackController extends BaseController

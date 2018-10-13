@@ -8,7 +8,6 @@
 
 namespace App\Http\Controllers\Blog;
 
-use App\Http\Controllers\Auth\Manager\ConfigAuthController;
 use App\Model\Blog\Member;
 use Illuminate\Http\Request;
 

@@ -16,7 +16,6 @@ class ArticleAuthController extends BaseAuthController
         'desc' => 'required',
         'key' => 'required',
         'class_id' => 'required',
-        'sort'      =>'required'
     ];
 
     protected $message = [

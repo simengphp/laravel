@@ -41,7 +41,6 @@ class UploadController
 
         //存储文件。disk里面的public。总的来说，就是调用disk模块里的public配置
         $ret = Storage::disk('uploads')->put($filename, file_get_contents($path));
-
         if ($ret) {
             return $filename;
         }

@@ -10,7 +10,7 @@ namespace App\Http\Controllers\Blog;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Demo\UploadController;
-use App\Model\Manager\Base;
+use App\Model\Blog\Base;
 use Illuminate\Http\Request;
 
 class BaseController extends Controller

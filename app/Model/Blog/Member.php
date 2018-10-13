@@ -8,9 +8,7 @@
 
 namespace App\Model\Blog;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Session;
 
 class Member extends Base
 {
@@ -33,12 +31,12 @@ class Member extends Base
 
     public function curdModel($data)
     {
-        $config = Member::find($data['id']);
-        $config->name = $data['name']??'';
-        $config->account = $data['account']??'';
-        $config->desc = $data['desc']??'';
-        $config->pic = $data['pic']??'';
-        $ret = $config->save();
+        $member = Member::find($data['id']);
+        $member->name = $data['name']??'';
+        $member->account = $data['account']??'';
+        $member->desc = $data['desc']??'';
+        $member->pic = $data['pic']??'';
+        $ret = $member->save();
         return $ret;
     }
 
