@@ -39,10 +39,9 @@
                     <table id="example2" class="table table-bordered table-hover">
                         <thead>
                         <tr>
-                            <th>编号</th>
+                            {{--<th>编号</th>--}}
                             <th>文章标题</th>
-                            <th>浏览量</th>
-                            <th>排序</th>
+                            <th>文章数据</th>
                             <th>创建时间</th>
                             <th>修改时间</th>
                             <th>操作</th>
@@ -51,17 +50,13 @@
                         <tbody>
                         @foreach($list as $val)
                             <tr>
-                                <td>{{$val->id}}</td>
+                                {{--<td>{{$val->id}}</td>--}}
                                 <td>{{$val->title}}</td>
-                                <td><input type="text" class="form-control" style="width:100px"
-                                           onchange="ajaxData('/blog/common/ajaxEditField',{'_token':
-                                                   '{{csrf_token()}}','table':'article','field':'look',
-                                                   'value':this.value,'id':{{$val->id}}})"
-                                           value="{{$val->look}}"></td></td>
-                                <td><input type="text" class="form-control" style="width:100px"
-                                           onchange="ajaxData('/blog/common/ajaxEditField',{'_token':
-                                                   '{{csrf_token()}}','table':'article','field':'sort',
-                                                   'value':this.value,'id':{{$val->id}}})" value="{{$val->sort}}"></td>
+                                <td>
+                                    <i class="fa fa-eye"></i> 阅读 -
+                                    <i class="fa fa-commenting"></i> 评论 -
+                                    <i class="fa fa-folder-o"></i> 收藏
+                                </td>
                                 <td>{{$val->created_at}}</td>
                                 <td>{{$val->updated_at}}</td>
                                 <td>
