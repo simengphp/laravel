@@ -15,11 +15,14 @@ use Illuminate\Support\Facades\DB;
 class ClassName extends Base
 {
     use SoftDeletes;
+    const IS_NAV=1;
+    const NO_NAV=0;
+
     protected $table = 'class';
     protected $primaryKey = 'id';
     protected $model = null;
     public $timestamps = true;
-    public $fillable = ['class_name', 'sort'];
+    public $fillable = ['class_name', 'title', 'keys', 'desc', 'sort', 'is_nav'];
     public function fromDateTime($value)
     {
         return empty($value)?$value:$this->getTimeFormat();
@@ -56,14 +59,17 @@ class ClassName extends Base
             return $ret;
         }
     }
-
     public function curdModel(Request $request)
     {
         $data = $request->post();
         if (isset($data['id'])&&$data['id']>0) {
             $class = ClassName::find($data['id']);
             $class->class_name = $data['class_name'];
-            $class->sort = $data['sort'];
+            $class->sort = $data['sort']??0;
+            $class->title = $data['title'];
+            $class->keys = $data['keys'];
+            $class->desc = $data['desc'];
+            $class->is_nav = $data['is_nav'];
             $ret = $class->save();
         } else {
             $ret = ClassName::create($data);
@@ -82,4 +88,17 @@ class ClassName extends Base
         $student = ClassName::find($id);
         return $student->delete();
     }
+
+    public function returnNav($ind = null)
+    {
+        $arr = [
+            self::IS_NAV =>'是',
+            self::NO_NAV =>'否',
+        ];
+        if ($ind != null) {
+            return array_key_exists($ind, $arr)?$arr[$ind]:'未知';
+        }
+        return $arr;
+    }
+
 }

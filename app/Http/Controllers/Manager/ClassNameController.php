@@ -47,7 +47,7 @@ class ClassNameController extends BaseController
             } else {
                 $ret = $this->model_obj;
             }
-            return view('manager.class.curdClass', ['top_name'=>'文章分类表单','version'=>'1.0','ret'=>$ret]);
+            return view('manager.class.curdClass', ['top_name'=>'文章分类表单','version'=>'1.0','class_obj'=>new ClassName(),'ret'=>$ret]);
         }
     }
 
