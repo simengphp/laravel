@@ -63,6 +63,18 @@
                     <li><a href="/stack/stack"><i class="fa fa-circle-o"></i>贡献者</a></li>
                 </ul>
             </li>
+            <li class="treeview friend">
+                <a href="#">
+                    <i class="fa fa-user-plus"></i>
+                    <span>友链管理</span>
+                    <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="/friend/friendList"><i class="fa fa-circle-o"></i>友链列表</a></li>
+                </ul>
+            </li>
         </ul>
     </section>
     <!-- /.sidebar -->

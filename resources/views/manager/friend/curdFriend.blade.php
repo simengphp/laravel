@@ -39,7 +39,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="sort" class="col-sm-2 control-label">
-                                    分类排序<i style="color: red">*</i>
+                                    排序<i style="color: red">*</i>
                                 </label>
                                 <div class="col-sm-6">
                                     <input class="form-control" id="sort" name="sort"

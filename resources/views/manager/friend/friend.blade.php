@@ -7,7 +7,7 @@
             <div class="box">
                 <div class="box-header">
                     <div class="col-xs-1">
-                    <a href="/class/curdClass">
+                    <a href="/friend/curdFriend">
                         <button type="button" class="btn btn-primary">添加</button>
                     </a>
                     </div>

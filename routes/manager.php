@@ -25,4 +25,9 @@ Route::group(['middleware'=>'manager'], function () {
     Route::any('/stack/stack', 'Manager\StackController@stack');
     Route::any('/stack/curdStack', 'Manager\StackController@curdStack');
     Route::any('/stack/remove', 'Manager\StackController@remove');
+
+    /**友情链接*/
+    Route::any('/friend/friendList', 'Manager\FriendController@friendList');
+    Route::any('/friend/curdFriend', 'Manager\FriendController@curdFriend');
+    Route::any('/friend/delFriend', 'Manager\FriendController@delFriend');
 });
